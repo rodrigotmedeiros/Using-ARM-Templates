@@ -1,10 +1,11 @@
-## Objetivo:
+## Objetivo
 
 * Realizar o deploy de recursos básicos do Azure utilizando ARM Templates e PowerShell;
 * Praticar o deploy de recursos utilizando IaC com ARM Template e também praticar PowerShell;
+* Praticar o uso do VCS (Version Control Software) Git, bem como do VCS remoto, o GitHub;
 * Sem qualquer interação além da execução inicial do script, montar todo o ambiente, executar as Extensions e ser capaz de, ao término, acessar o FQDN da VM do IIS, vm-iis, após esta ter ingressado no domínio, via browser a partir da vm-ad e conseguir visualizar a página padrão do IIS.
 
-## O ambiente:
+## O ambiente
 
 O ambiente é composto por:
 
@@ -14,7 +15,7 @@ O ambiente é composto por:
 * Duas VMs, sendo uma para Active Directory Domain Services e outra para IIS;
 * Tanto a feature de ADDS quanto de IIS são instaladas nas VMs por meio de Extensions. Não é preciso instalar nenhum desses serviços manualmente.
 
-## NOTA
+## Observações
 
 * Esse script foi desenvolvido unica e exclusivamente para fins de estudos, possíveis bugs podem aparecer;
 * Pretendo utilizar esse mesmo ambiente futuramente para aplicar outros conhecimentos, como incluir um Scale Set para o IIS atrás de um Load Balancer.
