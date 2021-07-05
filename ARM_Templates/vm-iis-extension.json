@@ -44,7 +44,7 @@
                 "autoUpgradeMinorVersion":true,
                 "settings": {
                     "fileUris": [
-                        "https://raw.githubusercontent.com/rodrigotmedeiros/Training-Infra-as-Code-with-ARM-Powershell/master/Powershell/IISnIngressDomain.ps1"
+                        "https://raw.githubusercontent.com/rodrigotmedeiros/arm-training/master/Powershell/IISnIngressDomain.ps1"
                     ],
                     "commandToExecute": "[concat('powershell.exe -ExecutionPolicy Unrestricted -File IISnIngressDomain.ps1 -domain ', parameters('adDomainName'), ' -user ', parameters('adminUsername'), ' -pass ', parameters('adminPassword'))]"
                 }

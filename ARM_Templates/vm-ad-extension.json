@@ -38,7 +38,7 @@
                 "autoUpgradeMinorVersion":true,
                 "settings": {
                     "fileUris": [
-                        "https://raw.githubusercontent.com/rodrigotmedeiros/Training-Infra-as-Code-with-ARM-Powershell/master/Powershell/installADDS.ps1"
+                        "https://raw.githubusercontent.com/rodrigotmedeiros/arm-training/master/Powershell/installADDS.ps1"
                     ],
                     "commandToExecute": "[concat('powershell.exe -ExecutionPolicy Unrestricted -File installADDS.ps1 -domain ', parameters('adDomainName'), ' -pass ', parameters('addsRecoveryPassword'))]"
                 }

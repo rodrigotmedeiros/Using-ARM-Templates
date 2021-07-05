@@ -19,6 +19,7 @@ $nsgName = "nsg-firewall"
 $vmADSize = "Standard_B2s"
 $vmIISSize = "Standard_B2s"
 $vmClientSize = "Standard_B1s"
+# Evite nomes com acentos ou cedilha
 $adDomainName = "contoso.corp"
 $resourceDeploymentJsonFile = "ARM_Templates\resourcesDeploymentParameters.json"
 $addsConfigurationJsonFile = "ARM_Templates\addsConfigurationParameters.json"

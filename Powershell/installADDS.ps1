@@ -1,11 +1,12 @@
 Param (
+    [string]$domain,
     [string]$pass
 )
-
-New-Item -Path "C:\" -Name "testfile1.txt" -ItemType "file" -Value $pass
-
 Install-WindowsFeature -name AD-Domain-Services -IncludeManagementTools
 
 $securePassword = ConvertTo-SecureString $pass -AsPlainText -Force
+$domain = "fabrikan.local"
+$netbiosName = $domain.Split(".")
+$netbiosName = $netbiosName[0].ToUpper()
 
-Install-ADDSForest -DomainName recruitlab.local -DomainNetBIOSName RECRUITLAB -InstallDNS -SafeModeAdministratorPassword $securePassword -NoRebootOnCompletion -Force
+Install-ADDSForest -DomainName $domain -DomainNetBIOSName $netbiosName -InstallDNS -SafeModeAdministratorPassword $securePassword -NoRebootOnCompletion -Force
