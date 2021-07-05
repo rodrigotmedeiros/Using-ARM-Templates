@@ -14,5 +14,7 @@ O ambiente é composto por:
 * Duas VMs, sendo uma para Active Directory Domain Services e outra para IIS;
 * Tanto a feature de ADDS quanto de IIS são instaladas nas VMs por meio de Extensions. Não é preciso instalar nenhum desses serviços manualmente.
 
-### NOTA: Esse script foi desenvolvido unica e exclusivamente para fins de estudos, possíveis bugs podem aparecer;
-### NOTA²: Pretendo utilizar esse mesmo ambiente futuramente para aplicar outros conhecimentos, como incluir um Scale Set para o IIS atrás de um Load Balancer.
+## NOTA
+
+* Esse script foi desenvolvido unica e exclusivamente para fins de estudos, possíveis bugs podem aparecer;
+* Pretendo utilizar esse mesmo ambiente futuramente para aplicar outros conhecimentos, como incluir um Scale Set para o IIS atrás de um Load Balancer.
