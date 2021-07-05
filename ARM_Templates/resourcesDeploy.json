@@ -5,79 +5,61 @@
         "publicIpAddress": {
             "type": "string",
             "metadata": {
-                "description": "Fetch the public IP address and add a NSG rule to allow RDP connection only from that IP."
+                "description": "IP público do executor do script para ser adicionado na regra de RDP do NSG."
             }
         },
         "adminUsername": {
             "type": "string",
             "metadata": {
-                "description": "Admin's username."
+                "description": "Username do admin das VMs."
             }
         },
         "adminPassword": {
             "type": "securestring",
             "metadata": {
-                "description": "Password for local admin account."
+                "description": "Senha do admin das VMs."
             }   
         },
         "vnetName": {
             "type": "string",
             "metadata": {
-                "description": "VNET's name."
+                "description": "Nome da VNET."
             }
         },
         "subnetServersName": {
             "type": "string",
             "metadata": {
-                "description": "Servers' subnet's name."
-            }
-        },
-        "subnetClientName": {
-            "type": "string",
-            "metadata": {
-                "description": "Client's subnet's name."
+                "description": "Nome da subnet dos servidores."
             }
         },
         "vmADName": {
             "type": "string",
             "metadata": {
-                "description": "AD VM's name."
+                "description": "Nome da VM de AD."
             }
         },
         "vmADSize": {
             "type": "string",
             "metadata": {
-                "description": "VM size."
+                "description": "Size da VM de AD."
             }
         },
         "vmIISName": {
             "type": "string",
             "metadata": {
-                "description": "IIS VM's name."
+                "description": "Nome da VM de IIS."
             }
         },
         "vmIISSize": {
             "type": "string",
             "metadata": {
-                "description": "VM size"
-            }
-        },
-        "vmClientSize": {
-            "type": "string",
-            "metadata": {
-                "description": "VM size"
-            }
-        },
-        "vmClientName": {
-            "type": "string",
-            "metadata": {
-                "description": "Client's name."
+                "description": "Size da VM de IIS"
             }
         },
         "nsgName": {
             "type": "string",
             "metadata": {
-                "description": "Network Security Group's name."
+                "description": "Nome do NSG."
             }
         }
     },
@@ -86,9 +68,7 @@
         "vmADNICName": "[concat(parameters('vmADName'), '-', 'nic')]",
         "vmADPIP": "[concat(parameters('vmADName'),'-', 'pip')]",
         "vmIISNICName": "[concat(parameters('vmIISName'), '-', 'nic')]",
-        "vmIISPIP": "[concat(parameters('vmIISName'),'-', 'pip')]",
-        "vmClientNicName": "[concat(parameters('vmClientName'), '-', 'nic')]",
-        "vmClientPIP": "[concat(parameters('vmClientName'),'-', 'pip')]"
+        "vmIISPIP": "[concat(parameters('vmIISName'),'-', 'pip')]"
     },
     "resources": [
         {
@@ -101,7 +81,7 @@
                     {
                         "name": "RDP_ALLOW",
                         "properties": {
-                            "description": "Only allow RDP from the client public IP address.",
+                            "description": "Permite RDP apenas se vier do IP do executor do script.",
                             "protocol": "Tcp",
                             "sourcePortRange": "*",
                             "destinationPortRange": "3389",
@@ -115,11 +95,11 @@
                     {
                         "name": "HTTP_ALLOW",
                         "properties": {
-                            "description": "Only allow RDP from the client public IP address.",
+                            "description": "Permite o acesso externo ao protocolo http das VMs de qualquer local.",
                             "protocol": "Tcp",
                             "sourcePortRange": "*",
-                            "destinationPortRange": "3389",
-                            "sourceAddressPrefix": "[parameters('publicIpAddress')]",
+                            "destinationPortRange": "80",
+                            "sourceAddressPrefix": "*",
                             "destinationAddressPrefix": "*",
                             "access": "Allow",
                             "priority": 170,
@@ -148,15 +128,6 @@
                         "name": "[parameters('subnetServersName')]",
                         "properties": {
                             "addressPrefix": "10.0.0.0/24",
-                            "networkSecurityGroup": {
-                                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('nsgName'))]"
-                            }
-                        }
-                    },
-                    {
-                        "name": "[parameters('subnetClientName')]",
-                        "properties": {
-                            "addressPrefix": "10.0.1.0/24",
                             "networkSecurityGroup": {
                                 "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('nsgName'))]"
                             }

@@ -16,7 +16,7 @@ O ambiente é composto por:
 * Tanto a feature de ADDS quanto de IIS são instaladas nas VMs por meio de Extensions. Não é preciso instalar nenhum desses serviços manualmente;
 * O arquivo "powershell.ps1" é o script principal, é a partir dele que todo o resto é puxado. Para fazer tudo funcionar, basta executá-lo. Lembrando que é preciso descomentar o primeiro comando, que irá se conectar à conta do Azure, no tenant definido.
 
-## Passos da execução do script:
+## Passos da execução do script
 
 1. Conecta-se à conta vinculada ao Azure;
 2. As variáveis são criadas, bem como o nome randômico do KeyVault e também, o IP público do executor é coletado para que uma regra no NSG seja criada posteriormente

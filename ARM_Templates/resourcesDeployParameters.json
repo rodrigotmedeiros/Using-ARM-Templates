@@ -5,7 +5,7 @@
                        "adminPassword":  {
                                              "reference":  {
                                                                "keyVault":  {
-                                                                                "id":  "/subscriptions/17e27b14-7fa4-4350-beae-b7617bea0f5a/resourceGroups/lab3/providers/Microsoft.KeyVault/vaults/kvstorerdnShC5"
+                                                                                "id":  "/subscriptions/17e27b14-7fa4-4350-beae-b7617bea0f5a/resourceGroups/lab3/providers/Microsoft.KeyVault/vaults/kvstorerdnwfHG"
                                                                             },
                                                                "secretName":  "vmPass"
                                                            }

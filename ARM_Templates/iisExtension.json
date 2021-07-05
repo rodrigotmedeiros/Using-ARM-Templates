@@ -5,25 +5,25 @@
         "vmIISName": {
             "type": "string",
             "metadata": {
-                "description": "IIS VM's name."
+                "description": "Nome da VM do IIS."
             }
         },
         "adDomainName": {
             "type": "string",
             "metadata": {
-                "description": "description"
+                "description": "Nome do domínio."
             }
         },
         "adminUsername": {
             "type": "string",
             "metadata": {
-                "description": "description"
+                "description": "Nome de uma conta para ingressar no domínio, nesse caso, a do administrador."
             }
         },
         "adminPassword": {
             "type": "securestring",
             "metadata": {
-                "description": "description"
+                "description": "Senha para ingressar no domínio."
             }
         }     
     },

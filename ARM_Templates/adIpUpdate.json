@@ -5,25 +5,25 @@
         "vmADPrivateIp": {
             "type": "string",
             "metadata": {
-                "description": "Gets the vm-ad's private IP address and set as static."
+                "description": "Pega o IP privado da vm-ad para definir como estático."
             }
         },
         "vnetName": {
             "type": "string",
             "metadata": {
-                "description": "VNET's name."
+                "description": "Nome da VNET."
             }
         },
         "subnetServersName": {
             "type": "string",
             "metadata": {
-                "description": "Servers' subnet's name."
+                "description": "Nome da subnet."
             }
         },
         "vmADName": {
             "type": "string",
             "metadata": {
-                "description": "AD VM's name."
+                "description": "Nome da VM de AD."
             }
         }
     },

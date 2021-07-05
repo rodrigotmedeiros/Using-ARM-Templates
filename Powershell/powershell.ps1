@@ -11,14 +11,11 @@ $keyvaultADDSRecoverySecret = "addsRecovery"
 $adminUsername = "masterOfKeys"
 $vnetName = "vnet-lab"
 $subnetServersName = "subnet-servers"
-$subnetClientName = "subnet-clients"
 $vmADName = "vm-ad"
 $vmIISName = "vm-iis"
-$vmClientName = "vm-client"
 $nsgName = "nsg-firewall"
 $vmADSize = "Standard_B2s"
 $vmIISSize = "Standard_B2s"
-$vmClientSize = "Standard_B1s"
 # Evite nomes com acentos ou cedilha
 $adDomainName = "contoso.corp"
 $resourceDeploymentJsonFile = "ARM_Templates\resourcesDeployParameters.json"
@@ -115,13 +112,10 @@ $resourcesDeployment = New-AzResourceGroupDeployment `
   -adminUsername $adminUsername `
   -vnetName $vnetName `
   -subnetServersName $subnetServersName `
-  -subnetClientName $subnetClientName `
   -vmADName $vmADName `
   -vmADSize $vmADSize `
   -vmIISName $vmIISName `
   -vmIISSize $vmIISSize `
-  -vmClientName $vmClientName `
-  -vmClientSize $vmClientSize `
   -nsgName $nsgName `
   -TemplateParameterFile $resourceDeploymentJsonFile
 
@@ -181,8 +175,7 @@ New-AzResourceGroupDeployment `
   -ResourceGroupName $rgName `
   -vmADPrivateIp $vmADPrivateIp `
   -vnetName $vnetName `
-  -subnetServersName $subnetServersName `
-  -subnetClientName $subnetClientName | Out-Null
+  -subnetServersName $subnetServersName | Out-Null
 
 if(!$?){
   Break

@@ -5,19 +5,19 @@
         "vmADName": {
             "type": "string",
             "metadata": {
-                "description": "AD VM's name."
+                "description": "Nome da VM de AD."
             }
         },
         "adDomainName": {
             "type": "string",
             "metadata": {
-                "description": "description"
+                "description": "Nome do domínio."
             }
         },
         "addsRecoveryPassword": {
             "type": "securestring",
             "metadata": {
-                "description": "ADDS Recovery password."
+                "description": "Senha de recuperação do ADDS."
             }
         }
     },
