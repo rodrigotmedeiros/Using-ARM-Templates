@@ -25,7 +25,7 @@ O ambiente é composto por:
 5. Ao criar as VMs, será usado um documento de parâmetros para o ARM Template "resourcesDeploy.json" que irá referenciar o KeyVault. Esse arquivo é populado utilizando os dados do KeyVault, como nome (gerado randomicamente) e o nome dos Secrets. Isso é feito tanto para recuperar as chaves das VMs quanto para recuperar a chave de recuperação do ADDS e acontece entre as linhas 92 e 102;
 6. Os recursos são criados;
 7. O IP privado da vm-ad é definido como estático dentro do Azure;
-8. A feature do ADDS é instalado por meio de uma Extension, executando outro script PowerShell (adConfig.ps1);
+8. A função do ADDS é instalada por meio de uma Extension, executando outro script PowerShell (adConfig.ps1);
 9. O DNS da VNET é atualizado com base no IP privado da vm-ad, coletado a partir do output do ARM-Template que fez o deploy dos recursos;
 10. As VMs são reiniciadas para que a alteração do DNS seja aplicada;
 11. A Extension que instalará o IIS e ingressará a vm-iis ao domínio é executada. Como a vm-ad estará em processo de configuração pós reboot, foi criado um loop de do/while dentro do iisConfig.ps1 (script responsável por esse processo) para que execute até que a vm-iis consiga ingressar no domínio.;
