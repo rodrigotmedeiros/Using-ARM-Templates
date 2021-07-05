@@ -3,7 +3,7 @@
 * Realizar o deploy de recursos básicos do Azure utilizando ARM Templates e PowerShell;
 * Praticar o deploy de recursos utilizando IaC com ARM Template e também praticar PowerShell;
 * Praticar o uso do VCS (Version Control Software) Git, bem como do VCS remoto, o GitHub;
-* Sem qualquer interação além da execução inicial do script, montar todo o ambiente, executar as Extensions e ser capaz de, ao término, acessar o FQDN da VM do IIS, vm-iis, após esta ter ingressado no domínio, via browser a partir da vm-ad e conseguir visualizar a página padrão do IIS.
+* Sem qualquer interação além da execução inicial do script, montar todo o ambiente, executar as Extensions e ser capaz de, ao término, acessar o FQDN da VM do IIS, vm-iis, logo após ela ter ingressado no domínio, via browser a partir da vm-ad e conseguir visualizar a página padrão do IIS.
 
 ## O ambiente
 
