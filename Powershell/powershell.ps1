@@ -1,8 +1,8 @@
 # Conecta-se ao Tenant do Azure
-# connect-azaccount -TenantId "a82988f9-cc0e-4703-9454-bc53bff5d1e4"
+# connect-azaccount -TenantId "<id_do_seu_AAD_tenant>"
 
 # ** VARIÁVEIS **
-$rgName = "lab"
+$rgName = "lab3"
 $rgRegion = "CentralUs"
 # Coleta o IP público do usuário, a fim de liberar somente esse IP para acessar os recursos dentro da VNET, utilizando NSG
 $publicIpAddress = Invoke-WebRequest -Uri ifconfig.me -UseBasicParsing | Select-Object -ExpandProperty Content 
@@ -21,8 +21,8 @@ $vmIISSize = "Standard_B2s"
 $vmClientSize = "Standard_B1s"
 # Evite nomes com acentos ou cedilha
 $adDomainName = "contoso.corp"
-$resourceDeploymentJsonFile = "ARM_Templates\resourcesDeploymentParameters.json"
-$addsConfigurationJsonFile = "ARM_Templates\addsConfigurationParameters.json"
+$resourceDeploymentJsonFile = "ARM_Templates\resourcesDeployParameters.json"
+$addsConfigurationJsonFile = "ARM_Templates\adParameters.json"
 # Gera um nome único para o KeyVault (o nome deve ser único dentro do Azure)
 $keyvaultNameLenght = 4
 $keyvaultCaracteres = "qazwsedcrfvtgbyhnujmikopQAZWSEDCRFVTGBYHNUJMKLP123456789"
