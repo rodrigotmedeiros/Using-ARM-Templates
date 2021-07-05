@@ -1,0 +1,14 @@
+{
+    "$schema":  "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion":  "1.0.0.0",
+    "parameters":  {
+                       "adminPassword":  {
+                                             "reference":  {
+                                                               "keyVault":  {
+                                                                                "id":  "/subscriptions/17e27b14-7fa4-4350-beae-b7617bea0f5a/resourceGroups/lab/providers/Microsoft.KeyVault/vaults/kvstorerdnAjp7"
+                                                                            },
+                                                               "secretName":  "vmPass"
+                                                           }
+                                         }
+                   }
+}

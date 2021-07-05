@@ -1,0 +1,61 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vmADPrivateIp": {
+            "type": "string",
+            "metadata": {
+                "description": "Gets the vm-ad's private IP address and set as static."
+            }
+        },
+        "vnetName": {
+            "type": "string",
+            "metadata": {
+                "description": "VNET's name."
+            }
+        },
+        "subnetServersName": {
+            "type": "string",
+            "metadata": {
+                "description": "Servers' subnet's name."
+            }
+        },
+        "vmADName": {
+            "type": "string",
+            "metadata": {
+                "description": "AD VM's name."
+            }
+        }
+    },
+    "functions": [],
+    "variables": {
+        "vmADNICName": "[concat(parameters('vmADName'), '-', 'nic')]",
+        "vmADPIP": "[concat(parameters('vmADName'),'-', 'pip')]"
+    },
+    "resources": [
+        {
+            "name": "[variables('vmADNICName')]",
+            "type": "Microsoft.Network/networkInterfaces",
+            "apiVersion": "2019-11-01",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "ipConfigurations": [
+                    {
+                        "name": "ipConfig1",
+                        "properties": {
+                            "privateIPAllocationMethod": "Static",
+                            "privateIPAddress": "[parameters('vmADPrivateIp')]",
+                            "publicIPAddress": {
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('vmADPIP'))]"
+                            },
+                            "subnet": {
+                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnetName'), parameters('subnetServersName'))]"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "outputs": {}
+}

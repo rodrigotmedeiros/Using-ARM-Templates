@@ -1,0 +1,55 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vmIISName": {
+            "type": "string",
+            "metadata": {
+                "description": "IIS VM's name."
+            }
+        },
+        "adDomainName": {
+            "type": "string",
+            "metadata": {
+                "description": "description"
+            }
+        },
+        "adminUsername": {
+            "type": "string",
+            "metadata": {
+                "description": "description"
+            }
+        },
+        "adminPassword": {
+            "type": "securestring",
+            "metadata": {
+                "description": "description"
+            }
+        }     
+    },
+    "functions": [],
+    "variables": {
+        "vmIisExtension": "[concat(parameters('vmIISName'), '/', 'IIS')]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "apiVersion": "2020-12-01",
+            "name": "[variables('vmIisExtension')]",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "publisher": "Microsoft.Compute",
+                "type": "CustomScriptExtension",
+                "typeHandlerVersion": "1.7",
+                "autoUpgradeMinorVersion":true,
+                "settings": {
+                    "fileUris": [
+                        "https://raw.githubusercontent.com/rodrigotmedeiros/Training-Infra-as-Code-with-ARM-Powershell/master/Powershell/IISnIngressDomain.ps1"
+                    ],
+                    "commandToExecute": "[concat('powershell.exe -ExecutionPolicy Unrestricted -File IISnIngressDomain.ps1 -domain ', parameters('adDomainName'), ' -user ', parameters('adminUsername'), ' -pass ', parameters('adminPassword'))]"
+                }
+            }
+        }
+    ],
+    "outputs": {}
+}
