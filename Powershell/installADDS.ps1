@@ -5,7 +5,6 @@ Param (
 Install-WindowsFeature -name AD-Domain-Services -IncludeManagementTools
 
 $securePassword = ConvertTo-SecureString $pass -AsPlainText -Force
-$domain = "fabrikan.local"
 $netbiosName = $domain.Split(".")
 $netbiosName = $netbiosName[0].ToUpper()
 
