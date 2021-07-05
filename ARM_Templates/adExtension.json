@@ -2,10 +2,10 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "vmIISName": {
+        "vmADName": {
             "type": "string",
             "metadata": {
-                "description": "IIS VM's name."
+                "description": "AD VM's name."
             }
         },
         "adDomainName": {
@@ -14,28 +14,22 @@
                 "description": "description"
             }
         },
-        "adminUsername": {
-            "type": "string",
-            "metadata": {
-                "description": "description"
-            }
-        },
-        "adminPassword": {
+        "addsRecoveryPassword": {
             "type": "securestring",
             "metadata": {
-                "description": "description"
+                "description": "ADDS Recovery password."
             }
-        }     
+        }
     },
     "functions": [],
     "variables": {
-        "vmIisExtension": "[concat(parameters('vmIISName'), '/', 'IIS')]"
+        "vmAdExtension": "[concat(parameters('vmADName'), '/', 'ADDS')]"
     },
     "resources": [
         {
             "type": "Microsoft.Compute/virtualMachines/extensions",
             "apiVersion": "2020-12-01",
-            "name": "[variables('vmIisExtension')]",
+            "name": "[variables('vmAdExtension')]",
             "location": "[resourceGroup().location]",
             "properties": {
                 "publisher": "Microsoft.Compute",
@@ -44,9 +38,9 @@
                 "autoUpgradeMinorVersion":true,
                 "settings": {
                     "fileUris": [
-                        "https://raw.githubusercontent.com/rodrigotmedeiros/arm-training/master/Powershell/IISnIngressDomain.ps1"
+                        "https://raw.githubusercontent.com/rodrigotmedeiros/arm-training/master/Powershell/adConfig.ps1"
                     ],
-                    "commandToExecute": "[concat('powershell.exe -ExecutionPolicy Unrestricted -File IISnIngressDomain.ps1 -domain ', parameters('adDomainName'), ' -user ', parameters('adminUsername'), ' -pass ', parameters('adminPassword'))]"
+                    "commandToExecute": "[concat('powershell.exe -ExecutionPolicy Unrestricted -File adConfig.ps1 -domain ', parameters('adDomainName'), ' -pass ', parameters('addsRecoveryPassword'))]"
                 }
             }
         }

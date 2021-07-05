@@ -2,10 +2,10 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "vmADName": {
+        "vmIISName": {
             "type": "string",
             "metadata": {
-                "description": "AD VM's name."
+                "description": "IIS VM's name."
             }
         },
         "adDomainName": {
@@ -14,22 +14,28 @@
                 "description": "description"
             }
         },
-        "addsRecoveryPassword": {
+        "adminUsername": {
+            "type": "string",
+            "metadata": {
+                "description": "description"
+            }
+        },
+        "adminPassword": {
             "type": "securestring",
             "metadata": {
-                "description": "ADDS Recovery password."
+                "description": "description"
             }
-        }
+        }     
     },
     "functions": [],
     "variables": {
-        "vmAdExtension": "[concat(parameters('vmADName'), '/', 'ADDS')]"
+        "vmIisExtension": "[concat(parameters('vmIISName'), '/', 'IIS')]"
     },
     "resources": [
         {
             "type": "Microsoft.Compute/virtualMachines/extensions",
             "apiVersion": "2020-12-01",
-            "name": "[variables('vmAdExtension')]",
+            "name": "[variables('vmIisExtension')]",
             "location": "[resourceGroup().location]",
             "properties": {
                 "publisher": "Microsoft.Compute",
@@ -38,9 +44,9 @@
                 "autoUpgradeMinorVersion":true,
                 "settings": {
                     "fileUris": [
-                        "https://raw.githubusercontent.com/rodrigotmedeiros/arm-training/master/Powershell/installADDS.ps1"
+                        "https://raw.githubusercontent.com/rodrigotmedeiros/arm-training/master/Powershell/iisConfig.ps1"
                     ],
-                    "commandToExecute": "[concat('powershell.exe -ExecutionPolicy Unrestricted -File installADDS.ps1 -domain ', parameters('adDomainName'), ' -pass ', parameters('addsRecoveryPassword'))]"
+                    "commandToExecute": "[concat('powershell.exe -ExecutionPolicy Unrestricted -File iisConfig.ps1 -domain ', parameters('adDomainName'), ' -user ', parameters('adminUsername'), ' -pass ', parameters('adminPassword'))]"
                 }
             }
         }
