@@ -1,5 +1,5 @@
 # Conecta-se ao Tenant do Azure
-# connect-azaccount -TenantId "<id_do_seu_AAD_tenant>"
+connect-azaccount -TenantId $(Read-Host "Insira o TenantId da sua conta")
 
 # ** VARIÁVEIS **
 $rgName = "lab3"
